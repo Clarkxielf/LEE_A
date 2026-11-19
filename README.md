@@ -108,7 +108,9 @@ LEE_A/
 
 Use the class directory names listed above. Preserve image-to-specimen identifiers and the original split manifest. Overlapping crops and repeated fields from the same source must be traceable when evaluating split independence.
 
-Prepare a compatible local Stable Diffusion base model containing the VAE, U-Net, CLIP text encoder, tokenizer, and scheduler. The supplied training code uses offline/local model loading. Trained patch-model weights, training-derived fingerprint statistics, and the dedicated large-field checkpoint must match their respective scripts.
+### Stable Diffusion v1.5 base model
+
+Download the Diffusers-format Stable Diffusion v1.5 model from the [Hugging Face model page](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5) and place it in `models/stable-diffusion-v1-5/`. The model page identifies the repository as a mirror of the deprecated RunwayML repository and lists the CreativeML Open RAIL-M license. For reproducibility, record the exact model revision used for each run. The FIM-Diffusion patch weights, fingerprint statistics and large-field checkpoint are separate artifacts described under **Data, weights, and availability**.
 
 **PSIM configuration:** the supplied PSIM script reads `PSIM_PROJECT_ROOT`, not simply `LEE_A_PROJECT_ROOT`. Its `PRETRAINED_MODEL`, `CHECKPOINT_DIR`, and `FP_STATS_PATH` settings must point to the matching base model, patch-model weights, and normalization statistics. Setting `--output-dir` changes the output location, not the checkpoint location. Check `MICRONS_PER_SOURCE_PIXEL` against the image calibration before measuring lath widths.
 
